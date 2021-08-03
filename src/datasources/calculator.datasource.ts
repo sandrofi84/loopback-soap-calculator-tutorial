@@ -6,7 +6,29 @@ const config = {
   connector: 'soap',
   url: 'https://calculator-webservice.mybluemix.net/calculator',
   wsdl: 'https://calculator-webservice.mybluemix.net/calculator?wsdl',
-  remotingEnabled: true
+  remotingEnabled: true,
+  "operations": {
+    "multiply": {
+     "service": "CalculatorService",
+     "port": "CalculatorPort",
+     "operation": "Multiply"
+   },
+   "add": {
+     "service": "CalculatorService",
+     "port": "CalculatorPort",
+     "operation": "Add"
+   },
+   "subtract": {
+     "service": "CalculatorService",
+     "port": "CalculatorPort",
+     "operation": "Subtract"
+   },
+   "divide": {
+     "service": "CalculatorService",
+     "port": "CalculatorPort",
+     "operation": "Divide"
+   }
+ }
 };
 
 // Observe application's life cycle to disconnect the datasource when

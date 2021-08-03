@@ -3,7 +3,7 @@ import {getService} from '@loopback/service-proxy';
 import {CalculatorDataSource} from '../datasources';
 import {AddResponse, CalculatorParameters, DivideResponse, MultiplyResponse, SubtractResponse} from '../interfaces';
 
-export interface Calculator {
+export interface CalculatorService {
   // this is where you define the Node.js methods that will be
   // mapped to REST/SOAP/gRPC operations as stated in the datasource
   // json file.
@@ -13,14 +13,14 @@ export interface Calculator {
   subtract(args: CalculatorParameters): Promise<SubtractResponse>;
 }
 
-export class CalculatorProvider implements Provider<Calculator> {
+export class CalculatorServiceProvider implements Provider<CalculatorService> {
   constructor(
     // calculator must match the name property in the datasource json file
     @inject('datasources.calculator')
     protected dataSource: CalculatorDataSource = new CalculatorDataSource(),
   ) {}
 
-  value(): Promise<Calculator> {
+  value(): Promise<CalculatorService> {
     return getService(this.dataSource);
   }
 }
